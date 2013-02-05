@@ -1,0 +1,17 @@
+{
+  "name": "cheermeupsite",
+  "subdomain": "cheerme.up",
+  "scripts": {
+    "start": "server.js"
+  },
+  "version": "0.0.0",
+  "engines": {
+    "node": "0.8.x"
+  },
+  "dependencies": {
+    "formidable": "1.0.x",
+    "mongodb": "1.2.x",
+    "request": "2.12.x",
+    "mailer": "0.6.x"
+  }
+}

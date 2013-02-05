@@ -6,8 +6,6 @@ var requestMod = require("request");
 log = console.log;
 
 
-var MONGOHQ_URL="mongodb://GabeLyons:happynotsad@widmore.mongohq.com:10010/CheerMeUp";
-
 function addDB(time, yourName, yourMessage, yourEmail, theirEmail, theirName) {
 	console.log("logDB called!");
 	var connectionUri = url.parse(MONGOHQ_URL);

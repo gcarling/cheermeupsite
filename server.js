@@ -15,7 +15,7 @@ handle["/newCheer"] = requestHandlers.newCheer;
 setInterval(function() {
 
 	var now = new Date();
-	db.checkDB(now);
+	//db.checkDB(now);
 }, 1000);
 
 
