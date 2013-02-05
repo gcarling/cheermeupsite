@@ -1,0 +1,269 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+*{
+float: none; outline: none; border: none; padding: 0px; margin: 0px; text-decoration: none; font-family: Helvetica, Sans-Serif;
+}
+
+
+
+
+
+.clear { float: none; clear: both; display: block; height: 0px; }
+
+
+header{
+margin: 0px;
+padding: 30px 0px;
+width: 100%;
+background:#6495ED;
+height: 152px;
+display: block;
+}
+
+body{
+margin: 0px;
+padding: 0px;
+}
+
+h1{
+text-indent: -9999px;
+height: 101px;
+width: 269px;
+margin: 0px auto 30px;
+display: block;
+background:url('cmu_w.png') center center no-repeat;
+}
+
+h2{
+font-size: 21px;
+color: #ffffff;
+height: 21px;
+display: block;
+text-align: center;
+font-family: Helvetica, Sans-Serif;
+width: 269px;
+margin: auto;
+}
+
+#Main{
+width: 270px;
+margin: 20px auto;
+}
+
+label{
+color: #6495ED;
+font-family: Helvetica, Sans-Serif;
+font-size: 18px;
+text-align: center;
+margin-bottom: 15px;
+height: 18px;
+display: block;
+}
+
+input[type=text]{
+width: 246px;
+height: 20px;
+padding: 10px 12px;
+line-height: 20px;
+background: none;
+border: 1px solid #6495ED;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+margin-bottom: 15px;
+display: block;
+font-size: 16px;
+color: #6495ED;
+
+}
+
+span.validate {
+	display: none;
+	position: absolute;
+	top: 105px;
+	right: -20px;
+	background: #a01c20;
+	width: 12px;
+	height: 12px;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+span.validate.valid { background: #30D143; }
+
+input[type=submit],a.next{
+width: 270px;
+height: 40px;
+line-height: 40px;
+background: #6495ED;
+border: 1px solid #6495ED;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+margin-bottom: 15px;
+text-align: center;
+text-transform: uppercase;
+display: block;
+color: white;
+font-family: Helvetica, Sans-Serif;
+font-size: 16px;
+cursor: pointer;
+}
+
+textarea{
+width: 246px;
+height: 40px;
+padding: 10px 12px;
+line-height: 20px;
+background: none;
+border: 1px solid #6495ED;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+margin-bottom: 15px;
+display: block;
+font-size: 16px;
+color: #6495ED;
+resize: vertical;
+max-height: 200px;
+}
+
+#time{
+height: 30px;
+width: 270px;
+display: block;
+margin-bottom: 15px;
+font-size: 16px;
+}
+
+#time #hourpicker{
+width: 185px;
+margin-right: 15px;
+float: left;
+height: 30px;
+font-size: 16px;
+}
+
+
+#time #AMPM{
+width: 70px;
+height: 30px;
+float: right;
+font-size: 16px;
+}
+
+div.ui-datepicker-header.ui-widget-header.ui-helper-clearfix.ui-corner-all {
+	background: #6495ED;
+	box-shadow: none;
+	border: none;
+}
+
+#myForm{
+margin: auto;
+position: relative;
+}
+
+#success{
+margin: auto;
+display: block;
+width: 270;
+text-align: center;
+}
+
+#goodmsg{
+background:url('./happy.png') center top no-repeat;
+padding-top: 220px;
+color:#6495ED;
+font-family: Helvetica, Sans-Serif;
+}
+
+#failure{
+margin: auto;
+display: block;
+width: 270;
+text-align: center;
+}
+
+#badmsg{
+background:url('./sad.png') center top no-repeat;
+padding-top: 220px;
+color:#6495ED;
+font-family: Helvetica, Sans-Serif;
+}
+
+#goBackGood{
+margin: auto;
+display: block;
+}
+
+#goBackBad{
+margin: auto;
+display: block;
+}
+
+::-webkit-input-placeholder {
+	font-style: italic;
+}
+:-moz-placeholder {
+	font-style: italic;
+}
+::-moz-placeholder {
+	font-style: italic;
+}
+:-ms-placeholder {
+	font-style: italic;
+}
+
+input[type=email]:valid {
+	border-color: #6495ED;
+}
+input[type=email]:invalid {
+	border-color: red;
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link href='http://fonts.googleapis.com/css?family=Averia+Libre:400,300italic,300,400italic' rel='stylesheet' type='text/css'/>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" rel='stylesheet' type='text/css'/>
+<link rel="stylesheet" href="css/jquery-ui-1.10.0.custom.css" rel='stylesheet' type='text/css'/>
+<link rel="stylesheet" href="css/custom.css" media="screen" rel='stylesheet' type='text/css'/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<script>
+  function isValidEmailAddress(emailAddress) {
+    var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+    return pattern.test(emailAddress);
+  };
+  $(function() {
+    $( "#datepicker" ).datepicker({minDate:0, defaultDate: +1});
+    var d = new Date();
+    $("#timeZone").val(d.getTimezoneOffset());
+    var fullDate = new Date()
+
+  console.log(fullDate);
+  //Thu May 19 2011 17:25:38 GMT+1000 {}
+   
+  //convert month to 2 digits
+  var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);
+   
+  var tomorrowsDate = twoDigitMonth + "/" + (fullDate.getDate()+1) + "/" + fullDate.getFullYear();
+  var currentDate = twoDigitMonth + "/" + fullDate.getDate() + "/" + fullDate.getFullYear();
+
+	$("#datepicker").val(currentDate);
+
+  });
+  
+ // $('input#email').keyup(function() { 
+    // $(this).css('border-color', 'red');
+   // $('')
+    // $('span.validate#foremail').fadeIn(100);
+    // var theiremail = $(this).val();
+    // if(isValidEmailAddress(theiremail)) {
+    //   $('span.validate#foremail').addClass('valid');
+    // } else {
+    //   $('span.validate#foremail').addClass('invalid');
+    // }
+  // });
+
+  $(document).keypress(function(e) {
+    if(e.which == 13) {
+      if($('input#theirname').is(':focus')) { 
+        $('input#email').focus();
+      } else if($('#email').is(':focus')) {
+        $('a#complete1').click();
+      } else if($('input#yourname').is(':focus')) { 
+        $('input#youremail').focus();
+      } else if($('#youremail').is(':focus')) {
+        $('a#complete2').click();
+      } else if($('input#message').is(':focus')) {
+        $('a#complete3').click();
+      }
+      return false;
+    }
+  });
+
+  $(document).delegate('a#complete1', 'click', function(){
+    if($('input#theirname').val().length && isValidEmailAddress($('input#email').val())) {
+  	 $("#step1").fadeOut(300);
+  	 setTimeout(function(){
+  	 	$("#step2").fadeIn();
+      $("input#yourname").focus();
+  	 },300);
+    } else {
+      if(!$('input#theirname').val()) {
+        $('input#theirname').css('border-color', 'red');
+        setTimeout(function() {
+          $('input#theirname').css('border-color', '#6495ED');
+        },2000);
+      }
+      if(!isValidEmailAddress($('input#email').val())) {
+        $('input#email').css('border-color', 'red'); 
+        setTimeout(function() {
+          $('input#email').css('border-color', '#6495ED');
+        },2000);
+      }
+    }
+  });
+  
+  $(document).delegate('a#complete2', 'click', function(){
+    if($('input#yourname').val().length && isValidEmailAddress($('input#youremail').val())) {
+     $("#step2").fadeOut(300);
+     setTimeout(function(){
+      $("#step3").fadeIn();
+      $("input#message").focus();
+     },300);
+    } else {
+      if(!$('input#yourname').val()) {
+        $('input#yourname').css('border-color', 'red');
+        setTimeout(function() {
+          $('input#yourname').css('border-color', '#6495ED');
+        },2000);
+      }
+      if(!isValidEmailAddress($('input#youremail').val())) {
+        $('input#youremail').css('border-color', 'red'); 
+        setTimeout(function() {
+          $('input#youremail').css('border-color', '#6495ED');
+        },2000);
+      }
+    }
+  });
+  
+  $(document).delegate('a#complete3', 'click', function(){
+  	$("#step3").fadeOut(300);
+  	setTimeout(function(){
+  		$("#step4").fadeIn();
+  	},300);
+  });
+  
+  $(document).delegate('input#submitForm', 'click', function() {
+  	var browserWidth = $(window).width();
+  	var formdata = $('#myForm').serialize();
+  	//$("#myForm").animate({'margin-left':browserWidth},500);
+  	$("#step4").fadeOut(300);
+  	$.post('/newCheer', formdata, function(resp){
+  		if(resp && resp.status == 'success') {
+				setTimeout(function(){
+  				$("#success").fadeIn();
+  			},300);
+			} else {
+				setTimeout(function(){
+  				$("#failure").fadeIn();
+  			},300);
+			}
+    });
+  	return false;
+  });
+  
+  $(document).delegate('input#goBackGood', 'click', function(){
+  	$("#success").fadeOut(300);
+    $('input#email').val('');
+    $('input#theirname').val('');
+    $('input#message').val('');
+  	setTimeout(function(){
+  		$("#step1").fadeIn();
+  	},300);
+  });
+  
+  $(document).delegate('input#goBackBad', 'click', function(){
+  	$("#failure").fadeOut(300);
+  	setTimeout(function(){
+  		$("#step1").fadeIn();
+  	},300);
+  });
+  </script>
+</head>
+<body>
+<header>
+<h1>
+CheerMeUp
+</h1>
+<h2>
+Brighten up someone's day.
+</h2>
+</header>
+<div id="Main">
+<form id="myForm" method="post" action="/newCheer">
+<div id="step1" class="step">
+<label for="theirname">Who would you like to cheer up?</label>
+<input placeholder="ex. Sam Dooman" maxlength="100" name="receiver" id="theirname" type="text" autofocus="autofocus"></input>
+<input placeholder="ex. sam@dooman.com" maxlength="100" name="email" id="email" type="text"></input>
+<a class="btn btn-primary next" id="complete1">Next</a>
+<span class="validate" id="foremail"></span>
+</div>
+<div id="step2" class="step" style="display: none">
+<label for="theirname">Who's sending this cheer?</label>
+<input placeholder="ex. Gabe Loins" maxlength="100" name="sender" id="yourname" type="text"></i> </input>
+<input placeholder="ex. gabe@loins.com" maxlength="100" name="senderemail" id="youremail" type="text"></input>
+<a class="btn btn-primary next" id="complete2">Next</a>
+<span class="validate" id="foryouremail"></span>
+</div>
+<div id="step3" class="step" style="display: none">
+<label for="theirname">Add a personal message?</label>
+<input name="message" placeholder="message (optional)" id="message" type="text" />
+<a class="btn btn-primary next" id="complete3">Next</a>
+<span class="validate" id="formessage"></span>
+</div>
+<div id="step4" class="step" style="display: none">
+<label for="theirname">When should it be delivered?</label>
+<input type="hidden" name="timeZone" id="timeZone"></input>
+<input type="text" name="date" id="datepicker"></input>
+<div id="time">
+	<select name="hour" id="hourpicker">
+		<option value=1 id="hour1">1 O'Clock</option>
+		<option value=2 id="hour2">2 O'Clock</option>
+		<option value=3 id="hour3">3 O'Clock</option>
+		<option value=4 id="hour4">4 O'Clock</option>
+		<option value=5 id="hour5">5 O'Clock</option>
+		<option value=6 id="hour6">6 O'Clock</option>
+		<option value=7 id="hour7">7 O'Clock</option>
+		<option value=8 id="hour8">8 O'Clock</option>
+		<option value=9 id="hour9">9 O'Clock</option>
+		<option value=10 id="hour10">10 O'Clock</option>
+		<option value=11 id="hour11">11 O'Clock</option>
+		<option value=0 id="hour0">12 O'Clock</option>
+	</select>
+	<select name="AMPM" id="AMPM">
+		<option value="AM" id="hourAM">AM</option>
+		<option value="PM" id="hourPM">PM</option>
+	</select>
+<div class="clear"></div>
+</div>
+<input class="btn btn-primary" id="submitForm" type="submit" value="Send Cheer"></input>
+</div>
+</form>
+<div id="success" style="display: none;">
+<p id="goodmsg">Thanks for using CheerMeUp!</p></br>
+<input class="btn btn-primary" id="goBackGood" type="submit" value="Send Another?"></input>
+</div>
+<div id="failure" style="display: none;">
+<p id="badmsg">Uhoh, something went wrong! To try again, click the link below.</p></br>
+<input class="btn btn-primary" id="goBackBad" type="submit" value="Try Again"></input>
+</div>
+</div>
+</body>
+
+<script>
+
+// sets the current selected date to today's day and time
+
+var time = new Date();
+currentHour = time.getHours();
+currentap = "AM";
+
+if(parseInt(currentHour) > 12) {
+  currentHour = parseInt(currentHour) - 12;
+  currentap = "PM";
+}
+
+document.getElementById("hour" + currentHour).selected = "selected";
+document.getElementById("hour" + currentap).selected = "selected";
+
+</script>
