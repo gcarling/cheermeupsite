@@ -13,9 +13,9 @@ handle["/dooman"] = requestHandlers.dooman;
 handle["/newCheer"] = requestHandlers.newCheer;
 
 setInterval(function() {
-
+	//console.log("testing...");
 	var now = new Date();
-	//db.checkDB(now);
+	db.checkDB(now);
 }, 1000);
 
 
