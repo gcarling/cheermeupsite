@@ -36,11 +36,11 @@ function bodyGenerator(toName, fromName, message, urlJSON, dateString) {
      return "<html style=' background-color: #BCD0F5;'> <head>" +
             "</head> <body style='font-family: Helvetica,sans-serif; color: #6495ED;'>" +
             "<div id='master' style='border-radius: 10px; width: 550; margin: auto; display: block; background-color: white; border: 3px solid #6495ED;'>" + 
-            "<div class='c' id='logoBox' style=' background-color: #6495ED; width: 100%; height:70px; padding-top: 15px; padding-left: 15px;'><img src='http://cheerme.up.jit.su/css/cmu_w.png' href='http://www.cheer-me-up.org' id='logo' style='margin: auto; height: 50px;'/><span id='header' style='color:white; text-align:right; float:right; padding-right: 15px; padding-top: 10px;'><strong>Hey, " + toName + "<span id='name'></span>!<br><span id='sender'>" + fromName + "</span> wanted to brighten up your day!"+
+            "<div class='c' id='logoBox' style=' background-color: #6495ED; width: 550px; height:70px; padding-top: 15px; padding-left: 15px;'><a href='http://www.cheer-me-up.org'> <img src='http://cheermeup.jit.su/css/cmu_w.png' id='logo' style='margin: auto; height: 50px;'/></a><span id='header' style='color:white; text-align:right; float:right; padding-right: 15px; padding-top: 10px;'><strong>Hey, " + toName + "<span id='name'></span>!<br><span id='sender'>" + fromName + "</span> wanted to brighten up your day!"+
             "</strong></span> </div>" + 
             "<div class='c' style='padding-left:10px'><p id='intro'>" + 
             "<strong>&quot;" + message + "&quot;<br>-" + fromName + "</strong></br></div>" + 
-            "<div> <i> ordered with love on " + dateString + " </i> </div><br>" + 
+            "<div> <i> Ordered with love on " + dateString + " </i> </div><br>" + 
             "<div id='content1' class='c'><img src='" + parsed[0] + "' class='content' style='border-radius: 20px; max-width: 500px; margin: auto; display: block;' /></div>" +
             "<div class='spacer' style='width: 550px; height: 12px; background-color: white;'></div><div class='spacer'></div>" +
             "<div id='content2' class='c'><img class='content' class='content' style='border-radius: 20px; max-width: 500px; margin: auto; display: block;' src='" + parsed[1] + "'/></div>" +

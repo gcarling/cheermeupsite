@@ -1,10 +1,10 @@
 {
   "name": "cheermeupsite",
-  "subdomain": "cheerme.up",
+  "subdomain": "cheermeup",
   "scripts": {
     "start": "server.js"
   },
-  "version": "0.0.0-23",
+  "version": "0.0.0-37",
   "engines": {
     "node": "0.8.x"
   },

@@ -162,7 +162,7 @@ Brighten up someone's day.
 </header>
 <div id="Main">
 <form id="myForm" method="post" action="/newCheer">
-<div id="step1" class="step" style="display: none">
+<div id="step1" class="step">
 <label for="theirname">Who would you like to cheer up?</label>
 <input placeholder="ex. Sam Dooman" maxlength="100" name="receiver" id="theirname" type="text" autofocus="autofocus"></input>
 <input placeholder="ex. sam@dooman.com" maxlength="100" name="email" id="email" type="text"></input>
@@ -182,7 +182,7 @@ Brighten up someone's day.
 <a class="btn btn-primary next" id="complete3">Next</a>
 <span class="validate" id="formessage"></span>
 </div>
-<div id="step4" class="step">
+<div id="step4" class="step" style="display: none">
 <label for="theirname">When should it be delivered?</label>
 <input type="hidden" name="timeZone" id="timeZone"></input>
 <input type="text" name="date" id="datepicker"></input>
@@ -224,7 +224,7 @@ Brighten up someone's day.
 // sets the current selected date to today's day and time
 
 var time = new Date();
-time.setHours(time.getHours() + 1);
+//time.setHours(time.getHours() + 1);
 currentHour = time.getHours();
 currentap = "AM";
 
