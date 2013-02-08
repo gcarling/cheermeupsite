@@ -110,7 +110,15 @@
   $(document).delegate('a#complete3', 'click', function(){
   	$("#step3").fadeOut(300);
   	setTimeout(function(){
+  		$("#step4title").fadeIn();
   		$("#step4").fadeIn();
+  	},300);
+  });
+  
+  $(document).delegate('a#complete4', 'click', function(){
+  	$("#step4").fadeOut(300);
+  	setTimeout(function(){
+  		$("#step5").fadeIn();
   	},300);
   });
   
@@ -172,7 +180,7 @@ Brighten up someone's day.
 </header>
 <div id="Main">
 <form id="myForm" method="post" action="/newCheer">
-<div id="step1" class="step" style="display: none">
+<div id="step1" class="step">
 <label for="theirname">Who would you like to cheer up?</label>
 <input placeholder="ex. Sam Dooman" maxlength="100" name="receiver" id="theirname" type="text" autofocus="autofocus"></input>
 <input placeholder="ex. sam@dooman.com" maxlength="100" name="email" id="email" type="text"></input>
@@ -180,24 +188,26 @@ Brighten up someone's day.
 <span class="validate" id="foremail"></span>
 </div>
 <div id="step2" class="step" style="display: none">
-<label for="theirname">Who's sending this cheer?</label>
+<label for="yourname">Who's sending this cheer?</label>
 <input placeholder="ex. Gabe Loins" maxlength="100" name="sender" id="yourname" type="text"></i> </input>
 <input placeholder="ex. gabe@loins.com" maxlength="100" name="senderemail" id="youremail" type="text"></input>
 <a class="btn btn-primary next" id="complete2">Next</a>
 <span class="validate" id="foryouremail"></span>
 </div>
 <div id="step3" class="step" style="display: none">
-<label for="theirname">Add a personal message?</label>
+<label for="message">Add a personal message?</label>
 <input name="message" placeholder="message (optional)" id="message" type="text" />
 <a class="btn btn-primary next" id="complete3">Next</a>
 <span class="validate" id="formessage"></span>
 </div>
-<div id="step4" class="step">
-<label for="theirname">When should it be delivered?</label>
-<input type="radio" id="radionow" onchange="radioChange()" name="noworthen" value="now" checked="yes"><span id="nowtext">Right now.</span></input></br>
-<input type="radio" id="radiolater" onchange="radioChange()" name="noworthen" value="later"><span id="thentext">In the future.</span></input>
+<label id="step4title" style="display: none">When should it be delivered?</label>
+<div id="step4" class="step" style="display: none">
+<a class="btn btn-primary next" id="submitForm">Right now</a>
+<a class="btn btn-primary next" id="complete4" onclick="setTime()">In the future</a>
+<span class="validate" id="formessage"></span>
+</div>
+<div id="step5" class="step" style="display: none">
 <input type="hidden" name="timeZone" id="timeZone"></input>
-<div id="datetime" style="display: none">
 <input type="text" name="date" id="datepicker"></input>
 <div id="time">
 	<select name="hour" id="hourpicker">
@@ -213,12 +223,12 @@ Brighten up someone's day.
 		<option value=10 id="hour10">10:00</option>
 		<option value=11 id="hour11">11:00</option>
 		<option value=0 id="hour0">12:00</option>
+		<option value=-1 id="hour-1" type="hidden" selected="selected">-1</option>
 	</select>
 	<select name="AMPM" id="AMPM">
-		<option value="AM" id="hourAM">AM</option>
+		<option value="AM" id="hourAM" selected="selected">AM</option>
 		<option value="PM" id="hourPM">PM</option>
 	</select>
-</div>
 <div class="clear"></div>
 </div>
 <input class="btn btn-primary" id="submitForm" type="submit" value="Send Cheer"></input>
@@ -236,9 +246,9 @@ Brighten up someone's day.
 </body>
 <script>
 // sets the current selected date to today's day and time
-
+function setTime(){
 var time = new Date();
-//time.setHours(time.getHours() + 1);
+time.setHours(time.getHours() + 1);
 currentHour = time.getHours();
 currentap = "AM";
 
@@ -249,6 +259,7 @@ if(parseInt(currentHour) > 12) {
 
 document.getElementById("hour" + currentHour).selected = "selected";
 document.getElementById("hour" + currentap).selected = "selected";
+}
 </script>
 
 </html>
