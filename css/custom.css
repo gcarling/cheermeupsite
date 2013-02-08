@@ -248,6 +248,20 @@ margin: auto;
 display: block;
 }
 
+#radionow, #radiolater{
+height: 40px;
+background: none;
+margin: auto;
+display: block;
+}
+
+#nowtext, #thentext{
+font-family: Helvetica, Sans-Serif;
+font-size: 16px;
+color: #6495ED;
+margin: auto;
+}
+
 ::-webkit-input-placeholder {
 	font-style: italic;
 }

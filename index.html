@@ -149,6 +149,16 @@
   		$("#step1").fadeIn();
   	},300);
   });
+  
+  function radioChange(){
+  	var sel = $('input:radio[name=noworthen]:checked').val();
+  	if (sel == "now"){
+  		$('#datetime').fadeOut(0);
+  	}
+  	else if (sel == "later"){
+  		$('#datetime').fadeIn(0);
+  	}
+  }
   </script>
 </head>
 <body>
@@ -162,7 +172,7 @@ Brighten up someone's day.
 </header>
 <div id="Main">
 <form id="myForm" method="post" action="/newCheer">
-<div id="step1" class="step">
+<div id="step1" class="step" style="display: none">
 <label for="theirname">Who would you like to cheer up?</label>
 <input placeholder="ex. Sam Dooman" maxlength="100" name="receiver" id="theirname" type="text" autofocus="autofocus"></input>
 <input placeholder="ex. sam@dooman.com" maxlength="100" name="email" id="email" type="text"></input>
@@ -182,9 +192,12 @@ Brighten up someone's day.
 <a class="btn btn-primary next" id="complete3">Next</a>
 <span class="validate" id="formessage"></span>
 </div>
-<div id="step4" class="step" style="display: none">
+<div id="step4" class="step">
 <label for="theirname">When should it be delivered?</label>
+<input type="radio" id="radionow" onchange="radioChange()" name="noworthen" value="now" checked="yes"><span id="nowtext">Right now.</span></input></br>
+<input type="radio" id="radiolater" onchange="radioChange()" name="noworthen" value="later"><span id="thentext">In the future.</span></input>
 <input type="hidden" name="timeZone" id="timeZone"></input>
+<div id="datetime" style="display: none">
 <input type="text" name="date" id="datepicker"></input>
 <div id="time">
 	<select name="hour" id="hourpicker">
@@ -205,6 +218,7 @@ Brighten up someone's day.
 		<option value="AM" id="hourAM">AM</option>
 		<option value="PM" id="hourPM">PM</option>
 	</select>
+</div>
 <div class="clear"></div>
 </div>
 <input class="btn btn-primary" id="submitForm" type="submit" value="Send Cheer"></input>
