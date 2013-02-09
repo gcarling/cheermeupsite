@@ -16,7 +16,7 @@ setInterval(function() {
 	//console.log("testing...");
 	var now = new Date();
 	db.checkDB(now);
-}, 1000);
+}, 10000);
 
 
 server.start(router.route, handle);
