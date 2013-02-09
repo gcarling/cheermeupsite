@@ -1,6 +1,6 @@
 {
   "name": "cheermeupsite",
-  "subdomain": "cheerme.up",
+  "subdomain": "cheermeup",
   "scripts": {
     "start": "server.js"
   },

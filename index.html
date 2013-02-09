@@ -110,7 +110,16 @@
   $(document).delegate('a#complete3', 'click', function(){
   	$("#step3").fadeOut(300);
   	setTimeout(function(){
+  		$("#step4title").fadeIn();
   		$("#step4").fadeIn();
+  	},300);
+  });
+  
+  $(document).delegate('a#complete4', 'click', function(){
+  	$("#now").val("no");
+  	$("#step4").fadeOut(300);
+  	setTimeout(function(){
+  		$("#step5").fadeIn();
   	},300);
   });
   
@@ -149,6 +158,16 @@
   		$("#step1").fadeIn();
   	},300);
   });
+  
+  function radioChange(){
+  	var sel = $('input:radio[name=noworthen]:checked').val();
+  	if (sel == "now"){
+  		$('#datetime').fadeOut(0);
+  	}
+  	else if (sel == "later"){
+  		$('#datetime').fadeIn(0);
+  	}
+  }
   </script>
 </head>
 <body>
@@ -162,7 +181,7 @@ Brighten up someone's day.
 </header>
 <div id="Main">
 <form id="myForm" method="post" action="/newCheer">
-<div id="step1" class="step" style="display: none">
+<div id="step1" class="step">
 <label for="theirname">Who would you like to cheer up?</label>
 <input placeholder="ex. Sam Dooman" maxlength="100" name="receiver" id="theirname" type="text" autofocus="autofocus"></input>
 <input placeholder="ex. sam@dooman.com" maxlength="100" name="email" id="email" type="text"></input>
@@ -170,20 +189,26 @@ Brighten up someone's day.
 <span class="validate" id="foremail"></span>
 </div>
 <div id="step2" class="step" style="display: none">
-<label for="theirname">Who's sending this cheer?</label>
+<label for="yourname">Who's sending this cheer?</label>
 <input placeholder="ex. Gabe Loins" maxlength="100" name="sender" id="yourname" type="text"></i> </input>
 <input placeholder="ex. gabe@loins.com" maxlength="100" name="senderemail" id="youremail" type="text"></input>
 <a class="btn btn-primary next" id="complete2">Next</a>
 <span class="validate" id="foryouremail"></span>
 </div>
 <div id="step3" class="step" style="display: none">
-<label for="theirname">Add a personal message?</label>
+<label for="message">Add a personal message?</label>
 <input name="message" placeholder="message (optional)" id="message" type="text" />
 <a class="btn btn-primary next" id="complete3">Next</a>
 <span class="validate" id="formessage"></span>
 </div>
-<div id="step4" class="step">
-<label for="theirname">When should it be delivered?</label>
+<label id="step4title" style="display: none">When should it be delivered?</label>
+<div id="step4" class="step" style="display:none">
+<a class="btn btn-primary next" id="submitForm">Right now</a>
+<a class="btn btn-primary next" id="complete4">In the future</a>
+<input id="now" type="hidden" name="now" value="yes"></input>
+<span class="validate" id="formessage"></span>
+</div>
+<div id="step5" class="step" style="display: none">
 <input type="hidden" name="timeZone" id="timeZone"></input>
 <input type="text" name="date" id="datepicker"></input>
 <div id="time">
