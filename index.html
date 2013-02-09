@@ -127,6 +127,7 @@
   	var browserWidth = $(window).width();
   	var formdata = $('#myForm').serialize();
   	//$("#myForm").animate({'margin-left':browserWidth},500);
+  	$("#step4title).fadeOut(300);
   	$("#step4").fadeOut(300);
   	$("#step5").fadeOut(300);
   	$.post('/newCheer', formdata, function(resp){
