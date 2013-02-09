@@ -127,7 +127,7 @@
   	var browserWidth = $(window).width();
   	var formdata = $('#myForm').serialize();
   	//$("#myForm").animate({'margin-left':browserWidth},500);
-  	$("#step4title).fadeOut(300);
+  	$("#step4title").fadeOut(300);
   	$("#step4").fadeOut(300);
   	$("#step5").fadeOut(300);
   	$.post('/newCheer', formdata, function(resp){
@@ -207,7 +207,7 @@ Brighten up someone's day.
 </div>
 <label id="step4title" style="display: none">When should it be delivered?</label>
 <div id="step4" class="step" style="display:none">
-<input class="btn btn-primary next" id="submitForm" type="submit">Right now</a>
+<input class="btn btn-primary next" id="submitForm" type="submit" value="Right now"></a>
 <a class="btn btn-primary next" id="complete4">In the future</a>
 <input id="now" type="hidden" name="now" value="yes"></input>
 <span class="validate" id="formessage"></span>
