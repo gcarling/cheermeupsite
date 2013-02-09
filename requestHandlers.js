@@ -70,22 +70,33 @@ function newCheer(response, request) {
 			var ampm = POST["AMPM"];
 			var timeZone = POST["timeZone"];
 
-			if(hour == "12") hour = "0";
-			if(ampm == "PM") {
-				hour = parseInt(hour) + 12;
+			var now = POST["now"];
+
+			var aggDate;
+
+			if(now == "no") {
+
+				if(hour == "12") hour = "0";
+				if(ampm == "PM") {
+					hour = parseInt(hour) + 12;
+				}
+
+				hour = parseInt(hour) + (parseInt(timeZone)/(60));
+
+
+				if(parseInt(hour) >= 24) {
+
+					hour = parseInt(hour) - 24;
+					dateArr[1] = parseInt(dateArr[1]) + 1;
+				}
+
+
+				aggDate = hour + "-" + parseInt(dateArr[1]) + "-" + (parseInt(dateArr[0])-1) + "-" + parseInt(dateArr[2]);
+
+			} else if(now == "yes") {
+				var currentTime = new Date();
+				aggDate = currentTime.getUTCHours() + "-" + currentTime.getUTCDate() + "-" + currentTime.getUTCMonth() + "-" + currentTime.getUTCFullYear()
 			}
-
-			hour = parseInt(hour) + (parseInt(timeZone)/(60));
-
-
-			if(parseInt(hour) >= 24) {
-
-				hour = parseInt(hour) - 24;
-				dateArr[1] = parseInt(dateArr[1]) + 1;
-			}
-
-
-			aggDate = hour + "-" + parseInt(dateArr[1]) + "-" + (parseInt(dateArr[0])-1) + "-" + parseInt(dateArr[2]);
 
 			var yourMessage = POST["message"];
 
