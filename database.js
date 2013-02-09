@@ -38,6 +38,21 @@ function checkDB(time) {
 		});
 		collection.remove({'time' : time.getUTCHours() + "-" + time.getUTCDate() + "-" + time.getUTCMonth() + "-" + time.getUTCFullYear()});
       });
+      var shiftTime = new Date();
+      shiftTime.setHours(time.getUTCHours() - 1);
+      var myCursor = collection.find({'time' : shiftTime.getUTCHours() + "-" + shiftTime.getUTCDate() + "-" + shiftTime.getUTCMonth() + "-" + shiftTime.getUTCFullYear()});
+      myCursor.toArray(function(error, docs) {
+        if(error) throw error;
+        docs.forEach(function(doc){
+	        requestMod('http://peddler.co/form/scrape', function (error, response, body) {
+			  if (!error && response.statusCode == 200) {
+		          mailer.sendMail(doc.email, doc.yourEmail, doc.yourName, doc.theirName, doc.yourMessage, body, doc.genTime);
+		        }
+			});
+		});
+		collection.remove({'time' : shiftTime.getUTCHours() + "-" + shiftTime.getUTCDate() + "-" + shiftTime.getUTCMonth() + "-" + shiftTime.getUTCFullYear()});
+      });
+
 	});
 }
 
