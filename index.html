@@ -144,6 +144,7 @@
   
   $(document).delegate('input#goBackGood', 'click', function(){
   	$("#success").fadeOut(300);
+  	$("#now").val("yes");
     $('input#email').val('');
     $('input#theirname').val('');
     $('input#message').val('');
@@ -153,6 +154,7 @@
   });
   
   $(document).delegate('input#goBackBad', 'click', function(){
+  	$("#now").val("yes");
   	$("#failure").fadeOut(300);
   	setTimeout(function(){
   		$("#step1").fadeIn();
