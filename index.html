@@ -116,6 +116,7 @@
   });
   
   $(document).delegate('a#complete4', 'click', function(){
+  	$("#now").val("no");
   	$("#step4").fadeOut(300);
   	setTimeout(function(){
   		$("#step5").fadeIn();
@@ -201,9 +202,10 @@ Brighten up someone's day.
 <span class="validate" id="formessage"></span>
 </div>
 <label id="step4title" style="display: none">When should it be delivered?</label>
-<div id="step4" class="step" style="display: none">
+<div id="step4" class="step" style="display:none">
 <a class="btn btn-primary next" id="submitForm">Right now</a>
-<a class="btn btn-primary next" id="complete4" onclick="setTime()">In the future</a>
+<a class="btn btn-primary next" id="complete4">In the future</a>
+<input id="now" type="hidden" name="now?" value="yes"></input>
 <span class="validate" id="formessage"></span>
 </div>
 <div id="step5" class="step" style="display: none">
@@ -223,10 +225,9 @@ Brighten up someone's day.
 		<option value=10 id="hour10">10:00</option>
 		<option value=11 id="hour11">11:00</option>
 		<option value=0 id="hour0">12:00</option>
-		<option value=-1 id="hour-1" type="hidden" selected="selected">-1</option>
 	</select>
 	<select name="AMPM" id="AMPM">
-		<option value="AM" id="hourAM" selected="selected">AM</option>
+		<option value="AM" id="hourAM">AM</option>
 		<option value="PM" id="hourPM">PM</option>
 	</select>
 <div class="clear"></div>
@@ -246,7 +247,7 @@ Brighten up someone's day.
 </body>
 <script>
 // sets the current selected date to today's day and time
-function setTime(){
+
 var time = new Date();
 time.setHours(time.getHours() + 1);
 currentHour = time.getHours();
@@ -259,7 +260,6 @@ if(parseInt(currentHour) > 12) {
 
 document.getElementById("hour" + currentHour).selected = "selected";
 document.getElementById("hour" + currentap).selected = "selected";
-}
 </script>
 
 </html>
