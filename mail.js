@@ -33,14 +33,14 @@ function sendMail(toEmail, fromEmail, fromName, toName, message, urlJSON, dateSt
 function bodyGenerator(toName, fromName, message, urlJSON, dateString) {
     var parsed = JSON.parse(urlJSON); 
 
-     return "<html style=' background-color: #BCD0F5;'> <head>" +
+     return "<html style=' background-color: #BCD0F5; '> <head>" +
             "</head> <body style='font-family: Helvetica,sans-serif; color: #6495ED;'>" +
             "<div id='master' style='border-radius: 10px; width: 100%; margin: auto; display: block; background-color: white; border: 3px solid #6495ED;'>" + 
-            "<div class='c' id='logoBox' style=' background-color: #6496ED; width: 95%; height:70px; padding-top: 2.5%; padding-left: 2.5%;'><a href='http://www.cheer-me-up.org'> <img src='http://cheermeup.jit.su/css/cmu_w.png' id='logo' style='margin: auto; height: 50px;'/></a><span id='header' style='color:white; text-align:right; float:right; padding-right: 15px; padding-top: 10px;'><strong>Hey, " + toName + "<span id='name'></span>!<br><span id='sender'>" + fromName + "</span> wanted to brighten up your day!"+
+            "<div class='c' id='logoBox' style=' background-color: #6495ED; width: 98%; height:70px; padding-top: 2%; padding-left: 2%;'><a href='http://www.cheermeup.me'> <img src='http://cheermeup.jit.su/css/cmu_w.png' id='logo' style='margin: auto; height: 50px;'/></a><span id='header' style='color:white; text-align:right; float:right; padding-right: 15px; padding-top: 10px;'><strong>Hey, " + toName + "<span id='name'></span>!<br><span id='sender'>" + fromName + "</span> wanted to brighten up your day!"+
             "</strong></span> </div>" + 
             "<div class='c' style='padding-left:10px'><p id='intro'>" + 
             "<strong>&quot;" + message + "&quot;<br>-" + fromName + "</strong></br></div>" + 
-            "<div> <i> Ordered with love on " + dateString + " </i> </div><br>" + 
+            "<div style='padding-left:10px; color:#6495ED;'> <i> Ordered with love on " + dateString + " </i> </div><br>" + 
             "<div id='content1' class='c'><img src='" + parsed[0] + "' class='content' style='border-radius: 20px; max-width: 500px; margin: auto; display: block;' /></div>" +
             "<div class='spacer' style='width: 550px; height: 12px; background-color: white;'></div><div class='spacer'></div>" +
             "<div id='content2' class='c'><img class='content' class='content' style='border-radius: 20px; max-width: 500px; margin: auto; display: block;' src='" + parsed[1] + "'/></div>" +
@@ -52,7 +52,7 @@ function bodyGenerator(toName, fromName, message, urlJSON, dateString) {
             "<div id='content5' class='c'><img class='content' class='content' style='border-radius: 20px; max-width: 500px; margin: auto; display: block;' src='" + parsed[4] + "'/></div>" +
             "<div class='spacer' style='width: 550px; height: 12px; background-color: white;'></div><div class='spacer'></div>" +
             "<div class='c' style='text-align:center; font-size:14pt'><p id='promotion'>Want to cheer someone else up? " +
-            "<a href='http://www.cheer-me-up.org'> Click here</a> to keep happy times going!</p> " + 
+            "<a href='http://www.cheermeup.me'> Click here</a> to keep happy times going!</p> " + 
             "</div><div class='spacer'></div><div height=10px width=500px></div>" + 
             "</div> </body> </html>";
 };
